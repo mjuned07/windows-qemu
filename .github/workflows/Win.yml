@@ -18,6 +18,7 @@ jobs:
       - name: Setup NGROK
         run: |
              wget https://raw.githubusercontent.com/mjuned47/windows-qemu/refs/heads/master/ngrok.yml -O ~/.config/ngrok/ngrok.yml
+             sudo apt install ngrok
              ngrok config add-authtoken ${{ secrets.NGROK_TOKEN }}
              
       - name: Start Windows
