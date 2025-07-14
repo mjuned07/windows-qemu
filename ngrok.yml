@@ -7,4 +7,4 @@ tunnels:
         addr: 8006
     rdp:
         proto: tcp
-        addr: 3886
+        addr: 3389
