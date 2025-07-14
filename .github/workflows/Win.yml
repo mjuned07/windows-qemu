@@ -13,6 +13,7 @@ jobs:
         run: |
              mkdir windows && cd windows
              wget https://raw.githubusercontent.com/mjuned47/windows-qemu/refs/heads/master/compose.yml
+             mkdir -p ~/.config/ngrok
              
       - name: Setup NGROK
         run: |
