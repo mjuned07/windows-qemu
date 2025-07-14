@@ -28,4 +28,4 @@ jobs:
              
       - name: Start Windows
         run: |
-             docker compose up && ngrok start --all
+             docker compose up -d && ngrok start --all --log=stdout
