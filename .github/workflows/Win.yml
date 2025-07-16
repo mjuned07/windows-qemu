@@ -12,7 +12,7 @@ jobs:
       - name: Setup Windows
         run: |
              mkdir windows && cd windows
-             curl -H "Authorization: token ${{ secrets.WIN_PAT }}" \
+             curl -H "Authorization: token $${{ secrets.GITHUB_TOKEN }}" \
              -H "Accept: application/vnd.github.v3.raw" \
              -L \
              https://api.github.com/repos/mjuned07/windows-qemu/contents/compose.yml?ref=master \
@@ -22,7 +22,7 @@ jobs:
              
       - name: Setup NGROK
         run: |
-             curl -H "Authorization: token ${{ secrets.WIN_PAT }}" \
+             curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
              -H "Accept: application/vnd.github.v3.raw" \
              -L \
              https://api.github.com/repos/mjuned07/windows-qemu/contents/ngrok.yml?ref=master \
