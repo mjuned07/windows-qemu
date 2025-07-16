@@ -12,12 +12,20 @@ jobs:
       - name: Setup Windows
         run: |
              mkdir windows && cd windows
-             wget https://raw.githubusercontent.com/mjuned07/windows-qemu/refs/heads/master/compose.yml
+             curl -H "Authorization: token ${{ secrets.WIN_PAT }}" \
+             -H "Accept: application/vnd.github.v3.raw" \
+             -L \
+             https://api.github.com/repos/mjuned07/windows-qemu/contents/compose.yml?ref=master \
+             -o compose.yml
              mkdir -p ~/.config/ngrok
              
       - name: Setup NGROK
         run: |
-             wget https://raw.githubusercontent.com/mjuned07/windows-qemu/refs/heads/master/ngrok.yml -O ~/.config/ngrok/ngrok.yml
+             curl -H "Authorization: token ${{ secrets.WIN_PAT }}" \
+             -H "Accept: application/vnd.github.v3.raw" \
+             -L \
+             https://api.github.com/repos/mjuned07/windows-qemu/contents/ngrok.yml?ref=master \
+             -o ngrok.yml
              curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
              | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
              && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" \
