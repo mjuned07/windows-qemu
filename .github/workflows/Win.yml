@@ -23,6 +23,7 @@ jobs:
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
              docker compose up -d
-             sudo apt install nmap && nmap localhost
+             sudo apt install nmap && nmap localhost && nmap 127.0.0.1 && nmap 0.0.0.0
              docker ps
+             netstat -tlnp
              ngrok start --all --log=stdout
