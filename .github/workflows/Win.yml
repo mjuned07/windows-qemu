@@ -12,6 +12,7 @@ jobs:
       - name: Setup NGROK
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
+             mkdir -p ~/.config/ngrok
              cp ngrok.yml ~/.config/ngrok/ngrok.yml
              ngrok config add-authtoken ${{ secrets.NGROK_TOKEN }}
              cat ~/.config/ngrok/ngrok.yml
