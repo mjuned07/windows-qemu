@@ -4,9 +4,15 @@ services:
     container_name: windows
     environment:
       VERSION: "11"
+      CPU_CORES: "8"
+      GPU: "Y"
+      NVIDIA_VISIBLE_DEVICES: "all"
+      NVIDIA_DRIVER_CAPABILITIES: "all"
+      RAM_SIZE: "12G"
     devices:
       - /dev/kvm
       - /dev/net/tun
+      - /dev/dri
     cap_add:
       - NET_ADMIN
     ports:
@@ -17,3 +23,10 @@ services:
       - ./windows:/storage
     restart: always
     stop_grace_period: 2m
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
