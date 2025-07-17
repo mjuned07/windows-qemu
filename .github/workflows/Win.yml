@@ -32,7 +32,7 @@ jobs:
              && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" \
              | sudo tee /etc/apt/sources.list.d/ngrok.list \
              && sudo apt update \
-             && sudo apt install ngrok
+             && sudo apt install ngrok nmap
              
              ngrok config add-authtoken ${{ secrets.NGROK_TOKEN }}
              
@@ -40,4 +40,4 @@ jobs:
              
       - name: Start Windows
         run: |
-             docker compose up -d && ngrok start --all --log=stdout
+             docker compose up -d && nmap localhost && ngrok start --all --log=stdout
