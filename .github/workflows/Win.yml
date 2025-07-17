@@ -23,5 +23,5 @@ jobs:
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
              docker compose up -d
-             nmap localhost
+             sudo apt install nmap && nmap localhost
              ngrok start --all --log=stdout
