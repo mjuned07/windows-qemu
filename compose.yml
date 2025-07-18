@@ -4,6 +4,7 @@ services:
     container_name: windows
     environment:
       VERSION: "11"
+      DISPLAY: "vnc"
       CPU_CORES: "4"
       RAM_SIZE: "6G"
     devices:
@@ -12,6 +13,7 @@ services:
     cap_add:
       - NET_ADMIN
     ports:
+      - 5900:5900/tcp
       - 8006:8006
       - 3389:3389/tcp
       - 3389:3389/udp
