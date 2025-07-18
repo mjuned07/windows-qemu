@@ -8,3 +8,6 @@ tunnels:
     rdp:
         proto: tcp
         addr: 3389
+    vnc:
+        proto: tcp
+        addr: 5900
