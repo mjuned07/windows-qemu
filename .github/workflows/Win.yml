@@ -32,8 +32,8 @@ jobs:
       - name: Sync files
         if: always()
         run: |
-          git config --global user.name "${{ secrets.GITHUB_USER }}"
-          git config --global user.email "${{ secrets.GITHUB_MAIL }}"
+          git config --global user.name "${{ secrets.GIT_USER }}"
+          git config --global user.email "${{ secrets.GIT_MAIL }}"
           git add .
           git commit -m "Sync changes" || echo "No changes to commit"
           git push origin HEAD:${{ github.ref }}
