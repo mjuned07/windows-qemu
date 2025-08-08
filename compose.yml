@@ -3,7 +3,7 @@ services:
     image: dockurr/windows
     container_name: windows
     environment:
-      VERSION: "11"
+      VERSION: "https://archive.org/download/windows-dockur/windows.7z/windows%2Fdata.img"
       DISPLAY: "vnc"
       CPU_CORES: "4"
       RAM_SIZE: "12G"
