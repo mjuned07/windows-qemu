@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@main
         with:
           persist-credentials: true
+          
       - name: Setup NGROK
         run: |
              wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
@@ -26,14 +27,7 @@ jobs:
       - name: Start Windows
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
+             wget https://archive.org/download/windows-dockur/windows.7z
+             7z x windows.7z
              docker compose up -d
              ngrok start --all --log=stdout
-             
-      - name: Sync files
-        if: always()
-        run: |
-          git config --global user.name "${{ secrets.GIT_USER }}"
-          git config --global user.email "${{ secrets.GIT_MAIL }}"
-          git add .
-          git commit -m "Sync changes" || echo "No changes to commit"
-          git push origin HEAD:${{ github.ref }}
