@@ -27,6 +27,6 @@ jobs:
       - name: Start Windows
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
-             docker compose up -d
+             docker compose up
              ngrok start --all --log=stdout
              
