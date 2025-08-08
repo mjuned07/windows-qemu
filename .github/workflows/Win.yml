@@ -27,8 +27,7 @@ jobs:
       - name: Download Windows
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
-             wget -q --show-progress --progress=bar:force https://archive.org/download/windows-dockur/windows.7z
-             7z x windows.7z
+             curl -s -L https://archive.org/download/windows-dockur/windows.7z | 7z x
       - name: Start Windows
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
