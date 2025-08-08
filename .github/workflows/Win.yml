@@ -28,9 +28,8 @@ jobs:
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
              mkdir -p windows
-             aria2c -x16 "https://archive.org/download/windows-dockur/windows.7z/windows%2Fdata.img" --out windows/data.img
-             qemu-img convert -c -O qcow2 windows/data.img windows/data.qcow2
+             aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
              sudo ln -sf windows/data.qcow2 windows/windows.boot
-             docker compose up -d
+             docker compose up
              ngrok start --all --log=stdout
              
