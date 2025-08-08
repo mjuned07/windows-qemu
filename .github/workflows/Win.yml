@@ -24,10 +24,6 @@ jobs:
              ngrok config add-authtoken ${{ secrets.NGROK_TOKEN }}
              cat ~/.config/ngrok/ngrok.yml
              
-      - name: Download Windows
-        run: |
-             cd /home/runner/work/windows-qemu/windows-qemu
-             curl -s -L https://archive.org/download/windows-dockur/windows.7z | 7z x
       - name: Start Windows
         run: |
              cd /home/runner/work/windows-qemu/windows-qemu
