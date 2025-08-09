@@ -1,7 +1,10 @@
 services:
   windows:
     image: dockurr/windows
-    mem_limit: 16g
+    deploy:
+      resources:
+        limits:
+          memory: 16g
     container_name: windows
     environment:
       VERSION: "11"
