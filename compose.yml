@@ -10,7 +10,7 @@ services:
       VERSION: "11"
       DISPLAY: "vnc"
       CPU_CORES: "4"
-      RAM_SIZE: "12G"
+      RAM_SIZE: "4G"
     devices:
       - /dev/kvm
       - /dev/net/tun
