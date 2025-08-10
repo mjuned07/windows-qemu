@@ -26,10 +26,9 @@ jobs:
              
       - name: Start Windows
         run: |
-             cd /home/runner/work/windows-qemu/windows-qemu
              mkdir -p windows
              aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
              sudo echo "windows/data.qcow2" > windows/windows.boot
-             docker compose up -d
+             docker run -it --memory=16g -d --rm --name windows -p 8006:8006 --device=/dev/kvm --device=/dev/net/tun --cap-add NET_ADMIN -v "${PWD:-.}/windows:/storage" --stop-timeout 120 dockurr/windows
              ngrok start --all --log=stdout
              
