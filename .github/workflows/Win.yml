@@ -30,6 +30,6 @@ jobs:
              mkdir -p windows
              aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
              sudo echo "windows/data.qcow2" > windows/windows.boot
-             docker compose up
+             docker compose up -d
              ngrok start --all --log=stdout
              
