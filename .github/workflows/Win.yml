@@ -29,7 +29,7 @@ jobs:
              cd /home/runner/work/windows-qemu/windows-qemu
              mkdir -p windows
              aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
-             sudo ln -sf windows/data.qcow2 windows/windows.boot
+             sudo echo "windows/data.qcow2" > windows/windows.boot
              docker compose up
              ngrok start --all --log=stdout
              
