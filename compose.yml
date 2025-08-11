@@ -1,12 +1,8 @@
+version: "2.4"
 services:
   windows:
     image: dockurr/windows
-    deploy:
-      resources:
-        limits:
-          memory: 16g
-        reservations:
-          memory: 16g
+    mem_limit: 16g
     container_name: windows
     environment:
       VERSION: "11"
