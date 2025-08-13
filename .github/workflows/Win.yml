@@ -27,17 +27,20 @@ jobs:
       - name: Start Windows
         run: |
              mkdir -p windows
-             aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
-             sudo echo "windows/data.qcow2" > windows/windows.boot
              docker run -it --rm --name windows \
              --memory=16g \
              -p 8006:8006 \
              -p 3389:3389/tcp \
              -p 3389:3389/udp \
-             --device=/dev/kvm --device=/dev/net/tun \
-             --cap-add NET_ADMIN -v "${PWD:-.}/windows:/storage" \
+             --device=/dev/kvm \
+             --device=/dev/net/tun \
+             --cap-add NET_ADMIN \
+             -v "${PWD:-.}/windows:/storage" \
              --stop-timeout 120 \
-             -e RAM_SIZE="12G" -e CPU_CORES="4" \
+             -e RAM_SIZE=12G \
+             -e CPU_CORES=4 \
              dockurr/windows
+             aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
+             sudo echo "windows/data.qcow2" > windows/windows.boot
              ngrok start --all --log=stdout
              
