@@ -31,11 +31,13 @@ jobs:
              sudo echo "windows/data.qcow2" > windows/windows.boot
              docker run -it --rm --name windows \
              --memory=16g \
-             -p 8006:8006 --device=/dev/kvm --device=/dev/net/tun \
-             --cap-add NET_ADMIN -v "${PWD:-.}/windows:/storage" \
-             --stop-timeout 120 dockurr/windows \
+             -p 8006:8006 \
              -p 3389:3389/tcp \
              -p 3389:3389/udp \
-             -e RAM_SIZE="12G" -e CPU_CORES="4"
+             --device=/dev/kvm --device=/dev/net/tun \
+             --cap-add NET_ADMIN -v "${PWD:-.}/windows:/storage" \
+             --stop-timeout 120 \
+             -e RAM_SIZE="12G" -e CPU_CORES="4" \
+             dockurr/windows
              ngrok start --all --log=stdout
              
