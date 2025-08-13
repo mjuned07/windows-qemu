@@ -27,7 +27,7 @@ jobs:
       - name: Start Windows
         run: |
              mkdir -p windows
-             docker run -it --rm --name windows \
+             docker run --rm --name windows \
              --memory=16g \
              -p 8006:8006 \
              -p 3389:3389/tcp \
