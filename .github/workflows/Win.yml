@@ -29,7 +29,7 @@ jobs:
       - name: Start Windows
         run: |
              mkdir -p windows
-             sudo fastfetch
+             sudo fastfetch -l none
              docker run --rm --name windows \
              --memory=16g \
              -p 8006:8006 \
