@@ -31,7 +31,9 @@ jobs:
         run: |
              mkdir -p windows
              sudo fastfetch -l none
-             docker run --rm --name windows \
+             aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
+             sudo echo "windows/data.qcow2" > windows/windows.boot
+             docker run -d --rm --name windows \
              --memory=16g \
              -p 8006:8006 \
              -p 3389:3389/tcp \
@@ -44,7 +46,5 @@ jobs:
              -e RAM_SIZE=12G \
              -e CPU_CORES=4 \
              dockurr/windows
-             aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
-             sudo echo "windows/data.qcow2" > windows/windows.boot
              ngrok start --all --log=stdout
              
