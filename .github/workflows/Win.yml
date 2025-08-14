@@ -19,7 +19,7 @@ jobs:
              wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
              wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.49.0/fastfetch-linux-amd64.tar.gz
              sudo tar -xvzf ngrok-v3-stable-linux-amd64.tgz -C /usr/local/bin
-             sudo tar -xvzf fastfetch-linux-amd64.tar.gz fastfetch-linux-amd64/usr/bin/fastfetch -C /usr/local/bin
+             sudo tar -xvzf fastfetch-linux-amd64.tar.gz fastfetch-linux-amd64/usr/bin/fastfetch --strip-components=3 -C /usr/local/bin
              cd /home/runner/work/windows-qemu/windows-qemu
              mkdir -p ~/.config/ngrok
              cp ngrok.yml ~/.config/ngrok/ngrok.yml
