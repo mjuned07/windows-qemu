@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          arch: aarch64
           distro: ubuntu-latest
           
       - name: Setup NGROK
@@ -30,10 +29,7 @@ jobs:
       - name: Start Windows
         run: |
              mkdir -p windows
-             sudo fastfetch -l none
-             aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
-             sudo echo "windows/data.qcow2" > windows/windows.boot
-             docker run -d --rm --name windows \
+             docker run -d --rm --name windows --e VERSION=10l \
              --memory=16g \
              -p 8006:8006 \
              -p 3389:3389/tcp \
@@ -43,7 +39,7 @@ jobs:
              --cap-add NET_ADMIN \
              -v "${PWD:-.}/windows:/storage" \
              --stop-timeout 120 \
-             -e RAM_SIZE=12G \
+             -e RAM_SIZE=14G \
              -e CPU_CORES=4 \
              dockurr/windows
              ngrok start --all --log=stdout
