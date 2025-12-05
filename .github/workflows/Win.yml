@@ -11,8 +11,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          distro: ubuntu-latest
           
       - name: Setup NGROK
         run: |
@@ -29,7 +27,7 @@ jobs:
       - name: Start Windows
         run: |
              mkdir -p windows
-             docker run -d --rm --name windows -e VERSION=xp \
+             docker run -d --rm --name windows -e VERSION=7u \
              --memory=16g \
              -p 8006:8006 \
              -p 3389:3389/tcp \
