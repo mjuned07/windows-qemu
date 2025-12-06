@@ -27,7 +27,10 @@ jobs:
       - name: Start Windows
         run: |
              mkdir -p windows
-             docker run -d --rm --name windows -e VERSION=7u \
+             sudo fastfetch -l none
+             aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
+             sudo echo "windows/data.qcow2" > windows/windows.boot
+             docker run -d --rm --name windows \
              --memory=16g \
              -p 8006:8006 \
              -p 3389:3389/tcp \
