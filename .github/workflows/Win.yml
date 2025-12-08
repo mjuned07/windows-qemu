@@ -42,7 +42,7 @@ jobs:
              --device=/dev/kvm \
              --device=/dev/net/tun \
              --cap-add NET_ADMIN \
-             -v "${PWD:-.}/windows:/storage" \
+             -v "${PWD:-.}/windows:$PWD/storage" \
              --stop-timeout 120 \
              -e RAM_SIZE=14G \
              -e CPU_CORES=4 \
