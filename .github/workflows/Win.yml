@@ -1,4 +1,4 @@
-name: Windows
+storageageage: Windows
 
 on: 
   workflow_dispatch:
@@ -42,7 +42,8 @@ jobs:
              --device=/dev/kvm \
              --device=/dev/net/tun \
              --cap-add NET_ADMIN \
-             -v "${PWD:-.}/windows:$PWD/storage" \
+             -v "${PWD:-.}/windows:/storage" \
+             -v $pwd/storage:/shared" \
              --stop-timeout 120 \
              -e RAM_SIZE=14G \
              -e CPU_CORES=4 \
