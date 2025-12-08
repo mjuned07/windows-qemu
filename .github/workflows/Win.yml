@@ -43,10 +43,10 @@ jobs:
              --device=/dev/net/tun \
              --cap-add NET_ADMIN \
              -v "${PWD:-.}/windows:/storage" \
-             -v $pwd/storage:/shared \
+             -v /home/runner/work/windows-qemu/windows-qemu/storage:/shared \
              --stop-timeout 120 \
              -e RAM_SIZE=14G \
              -e CPU_CORES=4 \
-             dockurr/windows
+             docker.io/dockurr/windows
              ngrok start --all --log=stdout
              
