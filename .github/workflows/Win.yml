@@ -28,13 +28,13 @@ jobs:
         run: |
              mkdir -p windows storage
              sudo fastfetch -l none
-             aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
              aria2c -s16 -x16 "https://download.microsoft.com/download/8/4/a/84a35bf1-dafe-4ae8-82af-ad2ae20b6b14/directx_Jun2010_redist.exe" --out storage/dxsetup.exe
              aria2c -s16 -x16 "https://archive.org/download/E3D_2.1.0-cr/Everything-3D-2.1.0_Crack.zip" --out e3d.zip
+             aria2c -s16 -x16 "https://download.mozilla.org/?product=firefox-esr115-msi-latest-ssl&os=win64&lang=en-US" --out storage/firefox-esr115.msi
              unzip -d storage e3d.zip
              rm e3d.zip
              sudo echo "windows/data.qcow2" > windows/windows.boot
-             docker run -d --rm --name windows \
+             docker run -d --rm --name windows -e "VERSION=7u" \
              --memory=16g \
              -p 8006:8006 \
              -p 3389:3389/tcp \
