@@ -1,4 +1,4 @@
-ngrok: Windows
+name: Windows
 
 on: 
   workflow_dispatch:
