@@ -34,7 +34,7 @@ jobs:
              unzip -d storage e3d.zip
              rm e3d.zip
              sudo echo "windows/data.qcow2" > windows/windows.boot
-             docker run -d --rm --name windows -e "VERSION=7u"\
+             docker run -d --rm --name windows -e "VERSION=7u" \
              -p 8006:8006 \
              -p 3389:3389/tcp \
              -p 3389:3389/udp \
@@ -48,4 +48,3 @@ jobs:
              -e CPU_CORES=4 \
              docker.io/dockurr/windows
              ngrok start --all --log=stdout
-             
