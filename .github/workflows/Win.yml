@@ -1,4 +1,4 @@
-14G Windows
+name: Windows
 
 on: 
   workflow_dispatch:
