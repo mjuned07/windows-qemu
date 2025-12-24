@@ -26,6 +26,7 @@ jobs:
              
       - name: Start Windows
         run: |
+             sudo ulimit -s unlimited
              mkdir -p windows storage
              sudo fastfetch -l none
              aria2c -s16 -x16 "https://download.microsoft.com/download/8/4/a/84a35bf1-dafe-4ae8-82af-ad2ae20b6b14/directx_Jun2010_redist.exe" --out storage/dxsetup.exe
