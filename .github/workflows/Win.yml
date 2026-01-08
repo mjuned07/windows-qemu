@@ -29,10 +29,11 @@ jobs:
              ulimit -s unlimited
              mkdir -p windows storage
              sudo fastfetch -l none
-             aria2c -s16 -x16 "https://download.microsoft.com/download/8/4/a/84a35bf1-dafe-4ae8-82af-ad2ae20b6b14/directx_Jun2010_redist.exe" --out storage/dxsetup.exe
+             aria2c -s16 -x16 "https://archive.org/download/projects-2.1.7z/Projects-2.1.7z"
              aria2c -s16 -x16 "https://archive.org/download/E3D_2.1.0-cr/Everything-3D-2.1.0_Crack.zip" --out e3d.zip
              aria2c -s16 -x16 "https://download.mozilla.org/?product=firefox-esr115-msi-latest-ssl&os=win64&lang=en-US" --out storage/firefox-esr115.msi
              unzip -d storage e3d.zip
+             7z x -o./storage Projects-2.1.7z
              rm e3d.zip
              sudo echo "windows/data.qcow2" > windows/windows.boot
              docker run -d --rm --name windows -e "VERSION=7u" \
