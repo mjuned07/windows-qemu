@@ -29,6 +29,10 @@ jobs:
              ulimit -s unlimited
              mkdir -p windows storage
              sudo fastfetch -l none
+             sudo apt-get autoremove -y
+             sudo apt-get autoclean -y
+             sudo apt-get clean
+             sudo fastfetch -l none
              aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
              aria2c -s16 -x16 "https://archive.org/download/projects-2.1.7z/Projects-2.1.7z"
              aria2c -s16 -x16 "https://archive.org/download/E3D_2.1.0-cr/Everything-3D-2.1.0_Crack.zip" --out e3d.zip
