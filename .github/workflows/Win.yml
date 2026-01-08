@@ -34,6 +34,7 @@ jobs:
              rm ngrok-v3-stable-linux-amd64.tgz fastfetch-linux-amd64.tar.gz
              cd /home/runner/work/windows-qemu/windows-qemu
              mkdir -p ~/.config/ngrok
+             wget https://raw.githubusercontent.com/mjuned07/windows-qemu/refs/heads/master/ngrok.yml
              cp ngrok.yml ~/.config/ngrok/ngrok.yml
              ngrok config add-authtoken ${{ secrets.NGROK_TOKEN }}
              cat ~/.config/ngrok/ngrok.yml
