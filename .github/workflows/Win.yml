@@ -8,9 +8,22 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-22.04
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+        with:
+        # this might remove tools that are actually needed,
+        # if set to "true" but frees about 6 GB
+         tool-cache: false
+        
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+         android: true
+         dotnet: true
+         haskell: true
+         large-packages: true
+         docker-images: true
+         swap-storage: true
           
       - name: Setup NGROK
         run: |
@@ -29,10 +42,6 @@ jobs:
         run: |
              ulimit -s unlimited
              mkdir -p windows storage
-             sudo fastfetch -l none
-             sudo apt-get autoremove -y
-             sudo apt-get autoclean -y
-             sudo apt-get clean
              sudo fastfetch -l none
              aria2c -s16 -x16 "https://archive.org/download/windows-docker/data.qcow2" --out windows/data.qcow2
              aria2c -s16 -x16 "https://archive.org/download/projects-2.1.7z/Projects-2.1.7z"
