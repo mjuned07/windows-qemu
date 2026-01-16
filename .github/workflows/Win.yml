@@ -66,6 +66,6 @@ jobs:
              -e RAM_SIZE=8G \
              -e CPU_CORES=2 \
              -e USERNAME="${{ secrets.USER_NAME }}" \
-             -e PASSWORD="${{ secrets.PASSWORD }}"
+             -e PASSWORD="${{ secrets.PASSWORD }}" \
              docker.io/dockurr/windows
              ngrok start --all --log=stdout
